@@ -9,8 +9,8 @@ function App() {
     <div className="App">
       <Container fluid>
       <Row>
-        <Col  xs={7} className="bg-light border rounded-end"><SignIn /></Col>
-        <Col className="gradient">nice<br></br>to<br></br>see<br></br>you.</Col>
+        <Col  xs={7} className="bg-light rounded-end"><SignIn /></Col>
+        <Col className="right_media">nice<br></br>to<br></br>see<br></br>you.</Col>
       </Row>
     </Container>
     </div>

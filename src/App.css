@@ -1,11 +1,15 @@
 .App{
-  background-color: #94bbe9;
+  background-image: linear-gradient(0deg, rgba(132,111,89,1) 0%, rgba(76,81,89,1) 100%);
 }
 
-.gradient{
+.right_media{
   width: 100vw;
   height: 100vh;
-  background-image:radial-gradient(circle, #edcedc 0%, #94bbe9 100%);
+  /* background-image:radial-gradient(circle, #edcedc 0%, #94bbe9 100%); */
+  background-image: url("img/media.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
   display: flex;
   justify-content: center;
