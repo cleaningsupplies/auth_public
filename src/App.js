@@ -1,18 +1,18 @@
-import './App.css';
-import SignIn from './SignIn';
+import './css/app.css';
+import Signin from './Signin';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <Container fluid>
-      <Row>
-        <Col  xs={7} className="bg-light rounded-end"><SignIn /></Col>
-        <Col className="right_media">nice<br></br>to<br></br>see<br></br>you.</Col>
-      </Row>
-    </Container>
+        <Row>
+          <Col className="bg-light rounded-end"><Signin /></Col>
+          <Col className="right_media">nice<br></br>to<br></br>see<br></br>you.</Col>
+        </Row>
+      </Container>
     </div>
   );
 }

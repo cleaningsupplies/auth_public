@@ -1,27 +1,48 @@
 import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import React from 'react';
+import "./css/signin.css";
+import Card from 'react-bootstrap/Card';
+import Stack from 'react-bootstrap/Stack';
 
-export default function SignIn() {
+export default function Signin() {
 
+    //https://dribbble.com/shots/17564792-Log-in-page-Untitled-UI
 
   return (
-    <div>
-        <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></input>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1"></input>
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <Button variant="outline-primary">Primary</Button>
-        </form>
+    <div className='sign_container'>
+    
+        {/* <Card.Title>Please Log In</Card.Title> */}
+        <Container fluid>
+            <Row className="justify-content-md-center">
+                <Col xs lg="7">
+                    <form>
+                        <div>
+                            <label htmlFor="mail" className="label-text">Email</label>
+                            <input type="email" className="form-control" id="mail" placeholder="Enter your email"></input>
+                        </div>
+                        <div>
+                            <label htmlFor="password" className="label-text">Password</label>
+                            <input type="password" className="form-control" id="password" placeholder="Enter your password"></input>
+                            <small>forgot password</small>
+                        </div>
+                        <div className="d-grid gap-2">
+                            <Button variant="login">Login</Button>
+                        </div>
+                    </form>
+                </Col>
+            </Row>
+        </Container>
+
+        <style type="text/css">{`
+            .btn-login {
+                background-color: #8b909a;
+                border: none;
+                color: white;
+            }
+        `}</style>
     </div>
   )
 }
