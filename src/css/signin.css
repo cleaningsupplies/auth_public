@@ -12,4 +12,32 @@
     font-size: 1.5vh;
 }
 
+.form-control::placeholder { 
+    color: rgb(210, 210, 210) !important;
+    opacity: 1; 
+    font-size: 1.8vh;
+}
+
+.forgot{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.signup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-login{
+    background-color: var(--brown_light) !important;
+    border: none !important;
+    font-weight: 500 !important;
+}
+
+
+.btn-login:hover{
+    background-color: var(--brown_darker) !important;
+}
 

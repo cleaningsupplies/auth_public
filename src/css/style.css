@@ -1,4 +1,39 @@
 :root{
     --base_grey : #8b909a;
-    --base_light: #F8F9FA;
+    --grey_light: #9fa3ac;
+    --grey_lighter: #F8F9FA;
+    --brown_darker: #b3a69a;
+    --brown_light: #ccbfb3;
+}
+
+.link{
+    font-size: 1.8vh;
+    font-weight: 500;
+    color: #c3b5a7;
+    text-decoration: none;
+}
+
+.link:hover{
+    color:var(--brown_darker);
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border: 1px solid var(--brown_light);
+  box-shadow: inset, 0 0 0px var(--brown_light);
+  outline: 0 none;
 }
