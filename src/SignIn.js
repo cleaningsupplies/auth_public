@@ -10,7 +10,7 @@ export default function Signin() {
     //https://dribbble.com/shots/17564792-Log-in-page-Untitled-UI
 
   return (
-    <div className='sign_container'>
+    <div className='sign-container'>
         <Container fluid>
             <Row className="justify-content-md-center mb-4">
                 <Col xs lg="7">
@@ -33,7 +33,7 @@ export default function Signin() {
                             <a href='/forgot' className='link'>Forgot password</a>
                         </div>
                         <div className="d-grid gap-2">
-                            <Button className='btn-login'>Login</Button>
+                            <Button className='btn-enter'>Sign in</Button>
                         </div>
                     </form>
                 </Col>
@@ -46,7 +46,7 @@ export default function Signin() {
                 </Col>
             </Row> */}
             <Row className="justify-content-md-center mt-5">
-                <Col xs lg="7" className="signup">
+                <Col xs lg="7" className="bottom-text">
                     Don't have account yet?&nbsp;<a href="/signup" className='link'>Sign up</a>
                 </Col>
             </Row>

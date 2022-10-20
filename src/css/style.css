@@ -6,6 +6,24 @@
     --brown_light: #ccbfb3;
 }
 
+.sign-container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.label-text{
+    font-size: 1.5vh;
+}
+
+.form-control::placeholder { 
+    color: rgb(210, 210, 210) !important;
+    opacity: 1; 
+    font-size: 1.8vh;
+}
+
 .link{
     font-size: 1.8vh;
     font-weight: 500;
@@ -16,6 +34,24 @@
 .link:hover{
     color:var(--brown_darker);
 }
+
+.btn-enter{
+    background-color: var(--brown_light) !important;
+    border: none !important;
+    font-weight: 500 !important;
+}
+
+
+.btn-enter:hover{
+    background-color: var(--brown_darker) !important;
+}
+
+.bottom-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 textarea:focus,
 input[type="text"]:focus,
