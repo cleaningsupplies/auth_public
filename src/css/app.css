@@ -20,3 +20,7 @@
   font-size: 5vh;
   font-style: italic;
 }
+
+#signup, #forgot{
+  display: none;
+}

@@ -29,6 +29,7 @@
     font-weight: 500;
     color: #c3b5a7;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .link:hover{
