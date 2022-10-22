@@ -4,6 +4,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import React from 'react';
 import "./css/forgot.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 export default function Forgot({changeForm}) {
 
@@ -15,7 +17,7 @@ export default function Forgot({changeForm}) {
     return (
         <div className='sign-container'>
             <div className='back' name="link_signin" onClick={change}>
-            back
+                <FontAwesomeIcon icon={faArrowLeft} />
             </div>
             <Container fluid>
                 <Row className="justify-content-md-center mb-4">
