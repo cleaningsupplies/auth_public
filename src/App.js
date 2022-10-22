@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 function App() {
 
-  const [name, setName] = useState("");
+  const [name, setName] = useState(".");
   
   function changeForm(item){
 
@@ -58,7 +58,7 @@ function App() {
           <Col id="signin" className="bg-light rounded-end"><Signin changeForm={changeForm} /></Col>
           <Col id="signup" className="bg-light rounded-end"><Signup changeForm={changeForm} /></Col>
           <Col id = "forgot" className="bg-light rounded-end"><Forgot changeForm={changeForm} /></Col>
-          <Col className="right_media">nice<br></br>to<br></br>see<br></br>you{name}.</Col>
+          <Col className="right_media">nice<br></br>to<br></br>see<br></br>you{name}</Col>
         </Row>
       </Container>
     </div>

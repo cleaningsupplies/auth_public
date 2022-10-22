@@ -4,8 +4,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import React from 'react';
 import "./css/forgot.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function Forgot({changeForm}) {
 
@@ -16,18 +16,21 @@ export default function Forgot({changeForm}) {
 
     return (
         <div className='sign-container'>
-            <div className='back' name="link_signin" onClick={change}>
-                <FontAwesomeIcon icon={faArrowLeft} />
-            </div>
+            
             <Container fluid>
+            <Row className="justify-content-md-center mb-4">
+                    <Col lg="8" className="back_container">
+                        <FontAwesomeIcon className='back' name="link_signin" onClick={change} icon={faArrowLeft}/>
+                    </Col>
+                </Row>
                 <Row className="justify-content-md-center mb-4">
-                    <Col xs lg="8">
+                    <Col lg="8">
                         <h1>Forgot your password?</h1>
                         <p>No problem, reset here.</p>
                     </Col>
                 </Row>
                 <Row className="justify-content-md-center">
-                    <Col xs lg="8">
+                    <Col lg="8">
                         <form>
                             <div className='mb-4'>
                                 <label htmlFor="mail" className="label-text">Email</label>

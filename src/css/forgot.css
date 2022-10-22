@@ -1,5 +1,17 @@
 .back{
-    background-color: antiquewhite;
-    width: 100%;
     top: 0;
+    cursor: pointer;
+    font-size: 3vh;
+    color: var(--bown_link);
 }
+
+.back:hover{
+    color:var(--brown_darker);
+}
+
+.back_container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+

@@ -4,6 +4,7 @@
     --grey_lighter: #F8F9FA;
     --brown_darker: #b3a69a;
     --brown_light: #ccbfb3;
+    --bown_link: #c3b5a7;
 }
 
 .sign-container{
@@ -12,6 +13,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: var(--base_grey);
 }
 
 .label-text{
@@ -27,7 +29,7 @@
 .link{
     font-size: 1.8vh;
     font-weight: 500;
-    color: #c3b5a7;
+    color: var(--bown_link);
     text-decoration: none;
     cursor: pointer;
 }
