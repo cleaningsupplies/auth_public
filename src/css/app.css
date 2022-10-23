@@ -21,6 +21,45 @@
   font-style: italic;
 }
 
-#signup, #forgot{
+.login_media{
+  background-image: url("../img/media.jpg");
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: var(--grey_lighter);
+  font-size: 5vh;
+  font-style: italic;
+}
+
+#signup, #forgot, #reset, .login_media{
   display: none;
+}
+
+.logout_container{
+  width: 96%;
+  height: 96%;
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  top: 4%;
+  right: 3%;
+}
+
+.logout{
+  cursor: pointer;
+  font-size: 3vh;
+  color: var(--bown_link);
+}
+
+.logout:hover{
+  color:var(--brown_darker);
 }

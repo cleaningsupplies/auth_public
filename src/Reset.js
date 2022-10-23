@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -7,7 +6,7 @@ import "./css/forgot.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-export default function Forgot({changeForm}) {
+export default function Reset({changeForm}) {
 
     function change(e){
         e.preventDefault();
@@ -24,21 +23,8 @@ export default function Forgot({changeForm}) {
                 </Row>
                 <Row className="justify-content-md-center mb-4">
                     <Col lg="8">
-                        <h1>Forgot your password?</h1>
-                        <p>No problem, reset it here.</p>
-                    </Col>
-                </Row>
-                <Row className="justify-content-md-center">
-                    <Col lg="8">
-                        <form>
-                            <div className='mb-4'>
-                                <label htmlFor="mail" className="label-text">Email</label>
-                                <input required type="email" className="form-control plh" id="mail" placeholder="Enter your email"></input>
-                            </div>
-                            <div className="d-grid gap-2">
-                                <Button className='btn-enter' name="btn_forgot" onClick={change}>Reset password</Button>
-                            </div>
-                        </form>
+                        <h1>Password reset!</h1>
+                        <p>Please check your mail inbox.</p>
                     </Col>
                 </Row>
             </Container>
