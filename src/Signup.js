@@ -10,6 +10,7 @@ export default function Signup({changeForm}) {
     function change(e){
         e.preventDefault();
         changeForm(e.target.getAttribute("name"));
+        document.querySelector("#form").reset();
     }
     
     return (
@@ -23,21 +24,21 @@ export default function Signup({changeForm}) {
                 </Row>
                 <Row className="justify-content-md-center">
                     <Col xs lg="7">
-                        <form>
+                        <form name="btn_signup" onSubmit={change}>
                             <div className='mb-2'>
                                 <label htmlFor="name" className="label-text">Name</label>
-                                <input type="text" className="form-control plh" id="name" placeholder="Enter your name"></input>
+                                <input required type="text" className="form-control plh" id="name" placeholder="Enter your name"></input>
                             </div>
                             <div className='mb-2'>
                                 <label htmlFor="mail" className="label-text">Email</label>
-                                <input type="email" className="form-control plh" id="mail" placeholder="Enter your email"></input>
+                                <input required type="email" className="form-control plh" id="mail" placeholder="Enter your email"></input>
                             </div>
                             <div className='mb-5'>
                                 <label htmlFor="password" className="label-text">Password</label>
-                                <input type="password" className="form-control plh" id="password" placeholder="Enter your password"></input>
+                                <input required type="password" className="form-control plh" id="password" placeholder="Enter your password"></input>
                             </div>
                             <div className="d-grid gap-2">
-                                <Button className='btn-enter' name="btn_signup" onClick={change}>Sign up</Button>
+                                <input type="submit" className='btn-enter' value="Sign up"></input>
                             </div>
                         </form>
                     </Col>

@@ -12,6 +12,7 @@ export default function Forgot({changeForm}) {
     function change(e){
         e.preventDefault();
         changeForm(e.target.getAttribute("name"));
+        document.querySelector("#form").reset();
     }
 
     return (
@@ -30,13 +31,13 @@ export default function Forgot({changeForm}) {
                 </Row>
                 <Row className="justify-content-md-center">
                     <Col lg="8">
-                        <form>
+                        <form name="btn_forgot" onSubmit={change}>
                             <div className='mb-4'>
                                 <label htmlFor="mail" className="label-text">Email</label>
                                 <input required type="email" className="form-control plh" id="mail" placeholder="Enter your email"></input>
                             </div>
                             <div className="d-grid gap-2">
-                                <Button className='btn-enter' name="btn_forgot" onClick={change}>Reset password</Button>
+                                <input type="submit" className='btn-enter' value="Reset password"></input>
                             </div>
                         </form>
                     </Col>

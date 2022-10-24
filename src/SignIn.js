@@ -7,11 +7,10 @@ import "./css/signin.css";
 
 export default function Signin({changeForm}) {
 
-    //https://dribbble.com/shots/17564792-Log-in-page-Untitled-UI
-
     function change(e){
         e.preventDefault();
         changeForm(e.target.getAttribute("name"));
+        document.querySelector("#form").reset();
     }
 
     return (
@@ -25,20 +24,20 @@ export default function Signin({changeForm}) {
                 </Row>
                 <Row className="justify-content-md-center">
                     <Col xs lg="7">
-                        <form>
+                        <form id="form" name="btn_signin" onSubmit={change}>
                             <div className='mb-2'>
                                 <label htmlFor="mail" className="label-text">Email</label>
-                                <input type="email" className="form-control plh" id="mail" placeholder="Enter your email"></input>
+                                <input required type="email" className="form-control plh" id="mail" placeholder="Enter your email"></input>
                             </div>
                             <div className='mb-2'>
                                 <label htmlFor="password" className="label-text">Password</label>
-                                <input type="password" className="form-control plh" id="password" placeholder="Enter your password"></input>
+                                <input required type="password" className="form-control plh" id="password" placeholder="Enter your password"></input>
                             </div>
                             <div className='mb-3 forgot'>
                                 <span className='link' name="link_forgot" onClick={change}>Forgot password</span>
                             </div>
                             <div className="d-grid gap-2">
-                                <Button className='btn-enter' name="btn_signin" onClick={change}>Sign in</Button>
+                                <input type="submit" className='btn-enter' value="Sign in"></input>
                             </div>
                         </form>
                     </Col>

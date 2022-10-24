@@ -42,6 +42,9 @@
     background-color: var(--brown_light) !important;
     border: none !important;
     font-weight: 500 !important;
+    border-radius: 5px;
+    height: 4.5vh;
+    color: white;
 }
 
 
