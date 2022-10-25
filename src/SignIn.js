@@ -1,4 +1,3 @@
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,7 +9,7 @@ export default function Signin({changeForm}) {
     function change(e){
         e.preventDefault();
         changeForm(e.target.getAttribute("name"));
-        document.querySelector("#form").reset();
+        document.querySelector("#page_form").reset();
     }
 
     return (
@@ -24,7 +23,7 @@ export default function Signin({changeForm}) {
                 </Row>
                 <Row className="justify-content-md-center">
                     <Col xs lg="7">
-                        <form id="form" name="btn_signin" onSubmit={change}>
+                        <form id="page_form" name="btn_signin" onSubmit={change}>
                             <div className='mb-2'>
                                 <label htmlFor="mail" className="label-text">Email</label>
                                 <input required type="email" className="form-control plh" id="mail" placeholder="Enter your email"></input>

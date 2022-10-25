@@ -14,7 +14,7 @@ function App() {
 
   const [name, setName] = useState("");
   
-  function changeForm(item){
+  function changeForm(item, n = name){
 
     const signin = document.querySelector("#signin");
     const signup = document.querySelector("#signup");
@@ -42,8 +42,10 @@ function App() {
         forgot.style.display = "block";
         break;
       case "btn_signup":
+        setName(n);
         signup.style.display = "none";
-        //signin.style.display = "block";
+        right_media.style.display = "none";
+        login_media.style.display = "flex";
         break;
       case "btn_signin":
         setName("Steffi");
@@ -65,11 +67,11 @@ function App() {
     <div className="app">
       <Container fluid>
         <Row>
-          <Col id="signin" className="bg-light rounded-end"><Signin changeForm={changeForm} /></Col>
-          <Col id="signup" className="bg-light rounded-end"><Signup changeForm={changeForm} /></Col>
-          <Col id = "forgot" className="bg-light rounded-end"><Forgot changeForm={changeForm} /></Col>
-          <Col id = "reset" className="bg-light rounded-end"><Reset changeForm={changeForm} /></Col>
-          <Col className="right_media">nice<br></br>to<br></br>see<br></br>you{name}.</Col>
+          <Col sm id="signin" className="bg-light rounded-end"><Signin changeForm={changeForm} /></Col>
+          <Col sm id="signup" className="bg-light rounded-end"><Signup changeForm={changeForm} /></Col>
+          <Col sm id="forgot" className="bg-light rounded-end"><Forgot changeForm={changeForm} /></Col>
+          <Col sm id="reset" className="bg-light rounded-end"><Reset changeForm={changeForm} /></Col>
+          <Col sm className="right_media">nice<br></br>to<br></br>see<br></br>you{name}.</Col>
           <Col className="login_media">
             <div className='logout_container'>
               <FontAwesomeIcon className='logout' icon={faArrowRightFromBracket} onClick={()=> changeForm("link_signin")}/>
