@@ -85,6 +85,10 @@
 
 // export default App;
 
+//https://www.mongodb.com/developer/products/atlas/email-password-authentication-react/#set-up-your-react-web-application
+//https://realm.mongodb.com/groups/635977c484685727d00ac1ae/apps/635979e75d8dfa7ed992f043/auth/providers
+//https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
+//https://www.freecodecamp.org/news/how-to-build-a-fullstack-authentication-system-with-react-express-mongodb-heroku-and-netlify/#section-1-how-to-build-the-backend
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserProvider } from "./contexts/user.context";
