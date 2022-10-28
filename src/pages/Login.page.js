@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
  
-const Signin = () => {
+const Login = () => {
  const navigate = useNavigate();
  const location = useLocation();
  
@@ -100,4 +100,4 @@ const Signin = () => {
  </form>
 }
  
-export default Signin;
+export default Login;

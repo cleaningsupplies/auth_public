@@ -2,6 +2,8 @@ import { Button, TextField } from "@mui/material";
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
+import { App } from "realm-web";
+import { APP_ID } from "../realm/constants";
  
 const Signup = () => {
  const navigate = useNavigate();
@@ -29,13 +31,20 @@ const Signup = () => {
  
  // As explained in the Login page.
  const onSubmit = async () => {
-    
+
+ 
    try {
-     const user = await emailPasswordSignup(form.email, form.password);
-     console.log(user)
-     if (user) {
-       redirectNow();
-     }
+    //https://realm.mongodb.com/groups/635beabea043b419bbef7afa/apps/635bec53152200674f1871ed/auth/users
+    //https://www.mongodb.com/docs/realm/sdk/node/examples/manage-email-password-users/#std-label-node-register-new-user
+    const app = new App(APP_ID);
+    const email = form.email;
+    const password = form.password;
+    await app.emailPasswordAuth.registerUser({ email, password });
+    redirectNow();
+    //  const user = await emailPasswordSignup(form.email, form.password);
+    //  if (user) {
+    //    redirectNow();
+    //  }
    } catch (error) {
      alert(error);
    }

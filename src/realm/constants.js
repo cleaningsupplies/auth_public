@@ -1,1 +1,1 @@
-export const APP_ID = "auth_app-qwoya";
+export const APP_ID = "auth_app-kliha";
