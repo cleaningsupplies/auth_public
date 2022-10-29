@@ -12,6 +12,7 @@ const Signup = () => {
  // As explained in the Login page.
  const { emailPasswordSignup } = useContext(UserContext);
  const [form, setForm] = useState({
+    name: "",
    email: "",
    password: ""
  });
@@ -31,20 +32,16 @@ const Signup = () => {
  
  // As explained in the Login page.
  const onSubmit = async () => {
-
- 
    try {
     //https://realm.mongodb.com/groups/635beabea043b419bbef7afa/apps/635bec53152200674f1871ed/auth/users
     //https://www.mongodb.com/docs/realm/sdk/node/examples/manage-email-password-users/#std-label-node-register-new-user
-    const app = new App(APP_ID);
-    const email = form.email;
-    const password = form.password;
-    await app.emailPasswordAuth.registerUser({ email, password });
-    redirectNow();
-    //  const user = await emailPasswordSignup(form.email, form.password);
-    //  if (user) {
-    //    redirectNow();
-    //  }
+    //https://www.mongodb.com/docs/realm/web/create-delete-user/
+     const user = await emailPasswordSignup(form.email, form.password);
+     if (user) {
+        localStorage.setItem(form.email, form.name);
+        console.log(localStorage.getItem(form.email));
+        redirectNow();
+     }
    } catch (error) {
      alert(error);
    }
@@ -52,6 +49,15 @@ const Signup = () => {
  
  return <form style={{ display: "flex", flexDirection: "column", maxWidth: "300px", margin: "auto" }}>
    <h1>Signup</h1>
+   <TextField
+     label="Name"
+     type="name"
+     variant="outlined"
+     name="name"
+     value={form.name}
+     onInput={onFormInputChange}
+     style={{ marginBottom: "1rem" }}
+   />
    <TextField
      label="Email"
      type="email"
