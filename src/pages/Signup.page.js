@@ -2,8 +2,6 @@ import { Button, TextField } from "@mui/material";
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
-import { App } from "realm-web";
-import { APP_ID } from "../realm/constants";
  
 const Signup = () => {
  const navigate = useNavigate();
@@ -36,6 +34,7 @@ const Signup = () => {
     //https://realm.mongodb.com/groups/635beabea043b419bbef7afa/apps/635bec53152200674f1871ed/auth/users
     //https://www.mongodb.com/docs/realm/sdk/node/examples/manage-email-password-users/#std-label-node-register-new-user
     //https://www.mongodb.com/docs/realm/web/create-delete-user/
+    //https://mhagemann.medium.com/how-to-add-a-new-user-to-a-mongodb-database-d896776b5362
      const user = await emailPasswordSignup(form.email, form.password);
      if (user) {
         localStorage.setItem(form.email, form.name);
