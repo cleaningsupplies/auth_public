@@ -44,7 +44,7 @@
 }
 
 #signup, #forgot, #reset, .login_media{
-  display: none;
+  /* display: none; */
 }
 
 .logout_container{

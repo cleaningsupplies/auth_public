@@ -94,7 +94,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserProvider } from "./contexts/user.context";
 import Home from "./pages/Home.page";
-import Login from "./pages/Login.page";
 import PrivateRoute from "./pages/PrivateRoute.page";
 import Signin from "./pages/Signin.page";
 import Signup from "./pages/Signup.page";
@@ -104,7 +103,7 @@ function App() {
    <BrowserRouter>
      <UserProvider>
        <Routes>
-         <Route exact path="/login" element={<Signin />} />
+         <Route exact path="/signin" element={<Signin />} />
          <Route exact path="/signup" element={<Signup />} />
          <Route element={<PrivateRoute />}>
            <Route exact path="/" element={<Home />} />

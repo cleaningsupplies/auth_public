@@ -59,7 +59,7 @@ export default function Signin() {
         try {
             const user = await emailPasswordLogin(form.email, form.password);
             if (user) {
-            redirectNow();
+                redirectNow();
             }
         } catch (error) {
             if (error.statusCode === 401) {
