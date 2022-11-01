@@ -8,7 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
 import '../css/app.css';
 
-export default function Signin() {
+export default function Signin({getName}) {
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -59,6 +59,7 @@ export default function Signin() {
         try {
             const user = await emailPasswordLogin(form.email, form.password);
             if (user) {
+                getName(form.email);
                 redirectNow();
             }
         } catch (error) {

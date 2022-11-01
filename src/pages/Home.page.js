@@ -1,17 +1,18 @@
-import { Button } from '@mui/material'
+import '../css/app.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/user.context';
  
-export default function Home() {
+export default function Home(props) {
  const { logOutUser } = useContext(UserContext);
  
- // This function is called when the user clicks the "Logout" button.
  const logOut = async () => {
    try {
-     // Calling the logOutUser function from the user context.
      const loggedOut = await logOutUser();
-     // Now we will refresh the page, and the user will be logged out and
-     // redirected to the login page because of the <PrivateRoute /> component.
      if (loggedOut) {
        window.location.reload(true);
      }
@@ -21,9 +22,17 @@ export default function Home() {
  }
  
  return (
-   <>
-     <h1>Welcome to Expengo</h1>
-     <Button variant="contained" onClick={logOut}>Logout</Button>
-   </>
+  <div className="app">
+    <Container fluid>
+      <Row>
+        <Col className="login_media">
+            <div className='logout_container'>
+              <FontAwesomeIcon className='logout' icon={faArrowRightFromBracket} onClick={logOut}/>
+            </div>
+          <br></br>hi<br></br>{props.name}!
+        </Col>
+      </Row>
+    </Container>
+  </div>
  )
 }

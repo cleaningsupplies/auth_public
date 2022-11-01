@@ -91,6 +91,7 @@
 //https://www.freecodecamp.org/news/how-to-build-a-fullstack-authentication-system-with-react-express-mongodb-heroku-and-netlify/#section-1-how-to-build-the-backend
 //https://www.mongodb.com/developer/products/atlas/email-password-authentication-app-services/
 
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { UserProvider } from "./contexts/user.context";
 import Home from "./pages/Home.page";
@@ -99,14 +100,21 @@ import Signin from "./pages/Signin.page";
 import Signup from "./pages/Signup.page";
  
 function App() {
+
+  const [name, setName] = useState("");
+  
+  function getName(email){
+    setName(localStorage.getItem(email));
+  }
+
  return (
    <BrowserRouter>
      <UserProvider>
        <Routes>
-         <Route exact path="/signin" element={<Signin />} />
-         <Route exact path="/signup" element={<Signup />} />
+         <Route exact path="/signin" element={<Signin getName={getName} />} />
+         <Route exact path="/signup" element={<Signup getName={getName} />} />
          <Route element={<PrivateRoute />}>
-           <Route exact path="/" element={<Home />} />
+           <Route exact path="/" element={<Home name={name} />} />
          </Route>
        </Routes>
      </UserProvider>

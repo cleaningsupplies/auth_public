@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
 
-export default function Signup() {
+export default function Signup({getName}) {
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -36,6 +36,7 @@ export default function Signup() {
             const user = await emailPasswordSignup(form.email, form.password);
             if (user) {
                 localStorage.setItem(form.email, form.name);
+                getName(form.email)
                 redirectNow();
             }
         } catch (error) {
