@@ -96,7 +96,7 @@ export default function Signin({getName}) {
                                                 <input required type="password" className="form-control plh" id="password" name="password" placeholder="Enter your password" onChange={onFormInputChange}></input>
                                             </div>
                                             <div className='mb-3 forgot'>
-                                                <span className='link' name="link_forgot">Forgot password</span>
+                                                <Link className='link' to="/forgot">Forgot password</Link>
                                             </div>
                                             <div className="d-grid gap-2">
                                                 <input type="submit" className='btn-enter' value="Sign in"></input>
@@ -106,7 +106,7 @@ export default function Signin({getName}) {
                                 </Row>
                                 <Row className="justify-content-md-center mt-5">
                                     <Col xs lg="7" className="bottom-text">
-                                        Don't have account yet?&nbsp;<Link className='link' name="link_signup" to="/signup">Sign up</Link>
+                                        Don't have account yet?&nbsp;<Link className='link' to="/signup">Sign up</Link>
                                     </Col>
                                 </Row>
                             </Container>
