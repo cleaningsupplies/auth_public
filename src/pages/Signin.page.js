@@ -91,13 +91,13 @@ export default function Signin({getName}) {
                                                 <label htmlFor="mail" className="label-text">Email</label>
                                                 <input required type="email" className="form-control plh" id="mail" name="email" placeholder="Enter your email" onChange={onFormInputChange}></input>
                                             </div>
-                                            <div className='mb-2'>
+                                            <div className='mb-5'>
                                                 <label htmlFor="password" className="label-text">Password</label>
                                                 <input required type="password" className="form-control plh" id="password" name="password" placeholder="Enter your password" onChange={onFormInputChange}></input>
                                             </div>
-                                            <div className='mb-3 forgot'>
+                                            {/* <div className='mb-3 forgot'>
                                                 <Link className='link' to="/forgot">Forgot password</Link>
-                                            </div>
+                                            </div> */}
                                             <div className="d-grid gap-2">
                                                 <input type="submit" className='btn-enter' value="Sign in"></input>
                                             </div>
