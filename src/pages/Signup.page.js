@@ -43,8 +43,8 @@ export default function Signup({getName}) {
             if(error.statusCode === 409){
                 alert("Your email address is already in use!");
                 navigate("/signin");
-            }else if(error.statusCode === 400){
-                alert("Your password must contain at least 6 characters!");
+            // }else if(error.statusCode === 400){
+            //     alert("Your password must contain at least 6 characters!");
             } else{
                 alert(error);
             }

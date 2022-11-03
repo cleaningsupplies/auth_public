@@ -15,16 +15,48 @@ export const UserProvider = ({ children }) => {
  // Function to log in user into our App Service app using their email & password
  const emailPasswordLogin = async (email, password) => {
     const credentials = Credentials.emailPassword(email, password);
-    const authenticatedUser = await app.logIn(credentials);
-    setUser(authenticatedUser);
+    const user = await app.logIn(credentials);
 
-    return authenticatedUser;
+    setUser(user);
+
+    try{
+      const mongo = user.mongoClient("mongodb-atlas");
+      const collection = mongo.db("auth_db").collection("users");
+  
+
+
+    // const result = await collection.findOne();
+    // console.log(result);
+
+    // const test = user.customData
+    // console.log(test);
+
+    
+      //https://www.youtube.com/watch?v=ialhliOj1rg
+    const filter = {
+      _id: user.id, // Query for the user object of the logged in user
+    };
+    const updateDoc = {
+      $addFields: {
+        _id : "$item",
+        item: "fruit"
+      }
+    };
+    const result = await collection.find(filter);
+    console.log(result, user.customData());
+
+    }catch(error){
+      alert(error);
+    }
+    
+
+    return user;
  };
  
  // Function to sign up user into our App Service app using their email & password
  const emailPasswordSignup = async (email, password) => {
    try {
-    
+      console.log(email,password)
      await app.emailPasswordAuth.registerUser({email, password});
      // Since we are automatically confirming our users, we are going to log in
      // the user using the same credentials once the signup is complete.
@@ -33,6 +65,20 @@ export const UserProvider = ({ children }) => {
      throw error;
    }
  };
+
+ const userData = async({email, password}) => {
+  try{
+    // const credentials = Credentials.emailPassword(email, password);
+    // console.log(email, password);
+    // const user = await app.logIn(credentials);
+    // const mongo = user.mongoClient("<atlas service name>");
+    // const collection = mongo.db("<database name>").collection("<collection name>");
+    // return collection.findOne();
+  }catch(error){
+    throw error;
+  }
+  
+ }
  
  // Function to fetch the user (if the user is already logged in) from local storage
  const fetchUser = async () => {
@@ -61,7 +107,7 @@ export const UserProvider = ({ children }) => {
    }
  }
  
- return <UserContext.Provider value={{ user, setUser, fetchUser, emailPasswordLogin, emailPasswordSignup, logOutUser }}>
+ return <UserContext.Provider value={{ user, setUser, fetchUser, emailPasswordLogin, emailPasswordSignup, logOutUser, userData }}>
    {children}
  </UserContext.Provider>;
 }
