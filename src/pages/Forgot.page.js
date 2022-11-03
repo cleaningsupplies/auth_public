@@ -10,6 +10,9 @@ import { UserContext } from "../contexts/user.context";
 
 export default function Forgot() {
 
+    //https://www.mongodb.com/docs/atlas/app-services/authentication/email-password/#password-resets
+    //https://realm.mongodb.com/groups/635beabea043b419bbef7afa/apps/635bec53152200674f1871ed/auth/providers/local-userpass
+
     const navigate = useNavigate();
     const location = useLocation();
 
