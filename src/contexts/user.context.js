@@ -1,3 +1,4 @@
+import { ObjectID } from "bson";
 import { createContext, useState } from "react";
 import { App, Credentials } from "realm-web";
 import { APP_ID } from "../realm/constants";
@@ -20,30 +21,36 @@ export const UserProvider = ({ children }) => {
     setUser(user);
 
     try{
-      const mongo = user.mongoClient("mongodb-atlas");
-      const collection = mongo.db("auth_db").collection("users");
-  
+      
+      
+      
 
+      const mongo = user.mongoClient("atlas-custom-user-data");
+      const db = mongo.db("auth_db")
+      const collection = db.collection("users");
 
-    // const result = await collection.findOne();
-    // console.log(result);
+      const filter = {
+        _id: user.id, 
+      };
 
-    // const test = user.customData
-    // console.log(test);
+      const updateDoc = {
+          _id: user.id,
+          name: "BEN", 
+      };
 
-    
-      //https://www.youtube.com/watch?v=ialhliOj1rg
-    const filter = {
-      _id: user.id, // Query for the user object of the logged in user
-    };
-    const updateDoc = {
-      $addFields: {
-        _id : "$item",
-        item: "fruit"
-      }
-    };
-    const result = await collection.find(filter);
-    console.log(result, user.customData());
+      //const result = await collection.updateOne(filter, updateDoc);
+      const result= await collection.insertOne(updateDoc);
+      // const result= await collection.findOne(
+      //   {},
+      //   {userID : user.id},
+      // );
+      //const result = await collection.find();
+      console.log(result);
+
+      //https://realm.mongodb.com/groups/635beabea043b419bbef7afa/apps/635bec53152200674f1871ed/auth/users
+      //https://cloud.mongodb.com/v2/635beabea043b419bbef7afa#metrics/replicaSet/635bec2a7f47f94d7c3a5895/explorer/auth_db/users/find
+      //https://www.mongodb.com/docs/guides/crud/insert/
+
 
     }catch(error){
       alert(error);
