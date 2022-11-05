@@ -33,18 +33,17 @@ export default function Signup({getName}) {
     const onSubmit = async (event) => {
         event.preventDefault();
         try{
-            const user = await emailPasswordSignup(form.email, form.password);
+            const user = await emailPasswordSignup(form.email, form.password, form.name);
             if (user) {
-                localStorage.setItem(form.email, form.name);
-                getName(form.email)
+                getName(user)
                 redirectNow();
             }
         } catch (error) {
             if(error.statusCode === 409){
                 alert("Your email address is already in use!");
                 navigate("/signin");
-            // }else if(error.statusCode === 400){
-            //     alert("Your password must contain at least 6 characters!");
+            }else if(error.statusCode === 400){
+                alert("Your password must contain at least 6 characters!");
             } else{
                 alert(error);
             }

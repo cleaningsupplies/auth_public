@@ -12,7 +12,7 @@ function App() {
   const [name, setName] = useState("");
   
   function getName(email){
-    setName(localStorage.getItem(email));
+    setName(email);
   }
 
  return (

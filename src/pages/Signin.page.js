@@ -59,7 +59,7 @@ export default function Signin({getName}) {
         try {
             const user = await emailPasswordLogin(form.email, form.password);
             if (user) {
-                getName(form.email);
+                getName(user);
                 redirectNow();
             }
         } catch (error) {
