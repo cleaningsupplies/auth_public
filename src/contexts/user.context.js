@@ -53,12 +53,12 @@ export const UserProvider = ({ children }) => {
     return result.name;
  };
 
- const findResult = async (collection, userID) => {
-    return await collection.findOne(
-      {_id: userID},
-      {}
-    );
- }
+//  const findResult = async (collection, userID) => {
+//     return await collection.findOne(
+//       {_id: userID},
+//       {}
+//     );
+//  }
  
  // Function to sign up user into our App Service app using their email & password
  const emailPasswordSignup = async (email, password, name) => {
@@ -72,15 +72,15 @@ export const UserProvider = ({ children }) => {
    }
  };
 
-//  const userData = async({email, password}) => {
-//   try{
-    
-//     return userData
-//   }catch(error){
-//     throw error;
-//   }
-  
-//  }
+
+ const sendPasswordResetMail = async (email) => {
+    try{
+      await app.emailPasswordAuth.sendResetPasswordEmail({email});
+      return "yo"
+    }catch(error){
+      throw error
+    }
+ }
  
  // Function to fetch the user (if the user is already logged in) from local storage
  const fetchUser = async () => {
@@ -109,7 +109,7 @@ export const UserProvider = ({ children }) => {
    }
  }
  
- return <UserContext.Provider value={{ user, setUser, fetchUser, emailPasswordLogin, emailPasswordSignup, logOutUser }}>
+ return <UserContext.Provider value={{ user, setUser, fetchUser, emailPasswordLogin, emailPasswordSignup, logOutUser, sendPasswordResetMail }}>
    {children}
  </UserContext.Provider>;
 }

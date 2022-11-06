@@ -10,13 +10,10 @@ import { UserContext } from "../contexts/user.context";
 
 export default function Forgot() {
 
-    //https://www.mongodb.com/docs/atlas/app-services/authentication/email-password/#password-resets
-    //https://realm.mongodb.com/groups/635beabea043b419bbef7afa/apps/635bec53152200674f1871ed/auth/providers/local-userpass
-
     const navigate = useNavigate();
     const location = useLocation();
 
-    //const { emailPasswordLogin } = useContext(UserContext);
+    const { sendPasswordResetMail } = useContext(UserContext);
 
     const [form, setForm] = useState({
         email : ""
@@ -32,9 +29,20 @@ export default function Forgot() {
         navigate(redirectTo ? redirectTo : "/signin");
     }
 
-    function onSubmit(){
-       
-    }
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            await sendPasswordResetMail(form.email);
+            alert("We've sent you a reset link. Please check your e-mail inbox.")
+            redirectNow();
+        } catch (error) {
+            if (error.statusCode === 404) {
+                alert("Oops, we don't recognize your e-mail address. You might want to check if there's a spelling mistake.");
+            } else {
+                alert(error);
+            }
+        }
+    };
 
     return (
         <div className="app">
