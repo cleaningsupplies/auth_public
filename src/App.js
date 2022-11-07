@@ -25,7 +25,7 @@ function App() {
          <Route exact path="/signup" element={<Signup getName={getName} />} />
          <Route exact path="/forgot" element={<Forgot/>} />
          <Route exact path="/reset" element={<Reset/>} />
-         <Route exact path="/confirm" element={<Confirm/>} />
+         <Route exact path="/confirm" element={<Confirm getName={getName} />} />
          <Route element={<PrivateRoute />}>
            <Route exact path="/" element={<Home name={name} />} />
          </Route>

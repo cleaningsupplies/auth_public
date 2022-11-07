@@ -36,7 +36,9 @@ export default function Signup({getName}) {
             const user = await emailPasswordSignup(form.email, form.password, form.name);
             if (user) {
                 getName(user)
-                redirectNow();
+                //redirectNow();
+
+                alert("Mail sent")
             }
         } catch (error) {
             if(error.statusCode === 409){
@@ -44,7 +46,9 @@ export default function Signup({getName}) {
                 navigate("/signin");
             }else if(error.statusCode === 400){
                 alert("Your password must contain at least 6 characters!");
-            } else{
+            } else if(error.statusCode === 401){
+                alert("Please confirm your email.");
+            }else{
                 alert(error);
             }
         }

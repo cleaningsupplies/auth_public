@@ -28,8 +28,6 @@ export default function Reset() {
         navigate(redirectTo ? redirectTo : "/signin");
     }
 
-    //sl08031994@gmail.com
-
     const onSubmit = async (event) => {
         event.preventDefault();
         try {

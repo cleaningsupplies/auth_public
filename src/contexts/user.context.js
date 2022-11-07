@@ -50,7 +50,7 @@ export const UserProvider = ({ children }) => {
     }catch(error){
       alert(error);
     }
-    return result.name;
+    return result.name !== null ? result.name : "you";
  };
 
 //  const findResult = async (collection, userID) => {
@@ -72,6 +72,14 @@ export const UserProvider = ({ children }) => {
    }
  };
 
+ const confirmNewUser = async (token, tokenId) => {
+  try{
+    await app.emailPasswordAuth.confirmUser({token, tokenId});
+    return "User confirmed"
+  }catch(error){
+    throw error;
+  }
+}
 
  const sendPasswordResetMail = async (email) => {
     try{
@@ -118,7 +126,7 @@ export const UserProvider = ({ children }) => {
    }
  }
  
- return <UserContext.Provider value={{ user, setUser, fetchUser, emailPasswordLogin, emailPasswordSignup, logOutUser, sendPasswordResetMail, resetPassword }}>
+ return <UserContext.Provider value={{ user, setUser, fetchUser, emailPasswordLogin, emailPasswordSignup, logOutUser, sendPasswordResetMail, resetPassword, confirmNewUser }}>
    {children}
  </UserContext.Provider>;
 }
