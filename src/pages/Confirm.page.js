@@ -30,7 +30,6 @@ export default function Confirm({getName}) {
         const redirectTo = location.search.replace(rplc.toString(), "");
         navigate(redirectTo ? redirectTo : "/");
     }
-
     //sl08031994@gmail.com
 
     useEffect(() => {
