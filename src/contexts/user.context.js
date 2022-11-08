@@ -50,7 +50,7 @@ export const UserProvider = ({ children }) => {
     }catch(error){
       alert(error);
     }
-    return result.name !== null ? result.name : "you";
+    return result !== null ? result.name : "you";
  };
 
 //  const findResult = async (collection, userID) => {
@@ -61,16 +61,31 @@ export const UserProvider = ({ children }) => {
 //  }
  
  // Function to sign up user into our App Service app using their email & password
- const emailPasswordSignup = async (email, password, name) => {
+ const emailPasswordSignup = async (email, password) => {
+ //const emailPasswordSignup = async (email, password, name) => {
    try {
      await app.emailPasswordAuth.registerUser({email, password});
      // Since we are automatically confirming our users, we are going to log in
      // the user using the same credentials once the signup is complete.
-     return emailPasswordLogin(email, password, name);
+     return "Confirmation mail resent. Please check your email inbox.";
+     //return emailPasswordLogin(email, password, name);
    } catch (error) {
      throw error;
    }
  };
+
+ const resendConfirmationMail = async (email) => {
+  //const emailPasswordSignup = async (email, password, name) => {
+    try {
+      await app.emailPasswordAuth.resendConfirmationEmail({email});
+      // Since we are automatically confirming our users, we are going to log in
+      // the user using the same credentials once the signup is complete.
+      return "Confirmation mail sent. Please check your email inbox.";
+      //return emailPasswordLogin(email, password, name);
+    } catch (error) {
+      throw error;
+    }
+  };
 
  const confirmNewUser = async (token, tokenId) => {
   try{
@@ -126,7 +141,7 @@ export const UserProvider = ({ children }) => {
    }
  }
  
- return <UserContext.Provider value={{ user, setUser, fetchUser, emailPasswordLogin, emailPasswordSignup, logOutUser, sendPasswordResetMail, resetPassword, confirmNewUser }}>
+ return <UserContext.Provider value={{ user, setUser, fetchUser, emailPasswordLogin, emailPasswordSignup, logOutUser, sendPasswordResetMail, resetPassword, confirmNewUser, resendConfirmationMail }}>
    {children}
  </UserContext.Provider>;
 }

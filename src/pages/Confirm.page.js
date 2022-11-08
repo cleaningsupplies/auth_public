@@ -34,7 +34,7 @@ export default function Confirm({getName}) {
 
     useEffect(() => {
       confirm();
-    })
+    },[])
 
     const confirm = async () => {
         try {
@@ -44,18 +44,9 @@ export default function Confirm({getName}) {
             let tokenId = new URLSearchParams(url.search).get('tokenId');
 
             await confirmNewUser(token, tokenId);
-           
-            alert("Your mail was confirmed!")
-            //redirectNow();
+
         } catch (error) {
-            // if(error.statusCode === 400){
-            //     alert("Your password must contain at least 6 characters!");
-            // } else if(error.statusCode === 404){
-            //     alert("Your reset link was used already or has been expired.");
-            //     //TODO: Resend
-            // } else{
-                alert(error);
-           // }
+            alert(error);
         }
     };
 
@@ -84,6 +75,7 @@ export default function Confirm({getName}) {
 
 
     //sl08031994@gmail.com
+    //test123
 
 
     return (
@@ -115,14 +107,9 @@ export default function Confirm({getName}) {
                                           <input required type="password" className="form-control plh" id="password" name="password" placeholder="Enter your password" onChange={onFormInputChange}></input>
                                       </div>
                                       <div className="d-grid gap-2">
-                                          <input type="submit" className='btn-enter' value="Sign up"></input>
+                                          <input type="submit" className='btn-enter' value="Sign in"></input>
                                       </div>
                                   </form>
-                              </Col>
-                          </Row>
-                          <Row className="justify-content-md-center mt-5">
-                              <Col xs lg="7" className="bottom-text">
-                                  Have account already?&nbsp;<Link className='link' name="link_signin" to="/signin">Sign in</Link>
                               </Col>
                           </Row>
                       </Container>

@@ -14,7 +14,7 @@ export default function Signup({getName}) {
     const { emailPasswordSignup } = useContext(UserContext);
 
     const [form, setForm] = useState({
-        name: "",
+        //name: "",
         email: "",
         password: ""
     });
@@ -27,18 +27,17 @@ export default function Signup({getName}) {
     
     const redirectNow = () => {
         const redirectTo = location.search.replace("?redirectTo=", "");
-        navigate(redirectTo ? redirectTo : "/");
+        navigate(redirectTo ? redirectTo : "/mailsent");
     }
     
     const onSubmit = async (event) => {
         event.preventDefault();
         try{
-            const user = await emailPasswordSignup(form.email, form.password, form.name);
+            const user = await emailPasswordSignup(form.email, form.password);
+           // const user = await emailPasswordSignup(form.email, form.password, form.name);
             if (user) {
-                getName(user)
-                //redirectNow();
-
-                alert("Mail sent")
+                //getName(user)
+                redirectNow();
             }
         } catch (error) {
             if(error.statusCode === 409){
@@ -70,10 +69,10 @@ export default function Signup({getName}) {
                                 <Row className="justify-content-md-center">
                                     <Col xs lg="7">
                                         <form id="form" name="btn_signup" onSubmit={onSubmit}>
-                                            <div className='mb-2'>
+                                            {/* <div className='mb-2'>
                                                 <label htmlFor="name" className="label-text">Name</label>
                                                 <input required type="text" className="form-control plh" id="name" name="name" placeholder="Enter your name" onChange={onFormInputChange}></input>
-                                            </div>
+                                            </div> */}
                                             <div className='mb-2'>
                                                 <label htmlFor="mail" className="label-text">Email</label>
                                                 <input required type="email" className="form-control plh" id="mail" name="email" placeholder="Enter your email" onChange={onFormInputChange}></input>
