@@ -13,9 +13,14 @@ import Signup from "./pages/Signup.page";
 function App() {
 
   const [name, setName] = useState("");
+  const [mail, setMail] = useState("");
   
-  function getName(email){
-    setName(email);
+  function getName(name){
+    setName(name);
+  }
+
+  function getMail(mail){
+    setMail(mail);
   }
 
  return (
@@ -23,11 +28,11 @@ function App() {
      <UserProvider>
        <Routes>
          <Route exact path="/signin" element={<Signin getName={getName} />} />
-         <Route exact path="/signup" element={<Signup getName={getName} />} />
+         <Route exact path="/signup" element={<Signup getMail={getMail} />} />
          <Route exact path="/forgot" element={<Forgot/>} />
          <Route exact path="/reset" element={<Reset/>} />
-         <Route exact path="/confirm" element={<Confirm getName={getName} />} />
-         <Route exact path="/mailsent" element={<Mailsent />} />
+         <Route exact path="/confirm" element={<Confirm getName={getName}/>} />
+         <Route exact path="/mailsent" element={<Mailsent mail={mail}/>} />
          <Route element={<PrivateRoute />}>
            <Route exact path="/" element={<Home name={name} />} />
          </Route>

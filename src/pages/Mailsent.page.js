@@ -2,15 +2,15 @@ import '../css/app.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { UserContext } from "../contexts/user.context";
 
-export default function Mailsent() {
+export default function Mailsent(props) {
 
     const { resendConfirmationMail } = useContext(UserContext);
 
     const resendMail = async (event) => {
-        let email = "sl08031994@gmail.com"
+        let email = props.mail;
         event.preventDefault();
         try{
             const user = await resendConfirmationMail(email);

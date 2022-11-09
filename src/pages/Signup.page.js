@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
 
-export default function Signup({getName}) {
+export default function Signup({getMail}) {
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -14,7 +14,6 @@ export default function Signup({getName}) {
     const { emailPasswordSignup } = useContext(UserContext);
 
     const [form, setForm] = useState({
-        //name: "",
         email: "",
         password: ""
     });
@@ -26,6 +25,7 @@ export default function Signup({getName}) {
     };
     
     const redirectNow = () => {
+        getMail(form.email);
         const redirectTo = location.search.replace("?redirectTo=", "");
         navigate(redirectTo ? redirectTo : "/mailsent");
     }
@@ -34,9 +34,7 @@ export default function Signup({getName}) {
         event.preventDefault();
         try{
             const user = await emailPasswordSignup(form.email, form.password);
-           // const user = await emailPasswordSignup(form.email, form.password, form.name);
             if (user) {
-                //getName(user)
                 redirectNow();
             }
         } catch (error) {

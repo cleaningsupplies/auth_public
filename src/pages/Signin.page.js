@@ -28,7 +28,8 @@ export default function Signin({getName}) {
     // This function will redirect the user to the
     // appropriate page once the authentication is done.
     const redirectNow = () => {
-        const redirectTo = location.search.replace("?redirectTo=", "");
+        let rplc = location.search;
+        const redirectTo = location.search.replace(rplc.toString(), "");
         navigate(redirectTo ? redirectTo : "/");
     }
     
@@ -57,7 +58,10 @@ export default function Signin({getName}) {
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            const user = await emailPasswordLogin(form.email, form.password);
+            let url = window.location;
+
+            let name = new URLSearchParams(url.search).get('name');
+            const user = await emailPasswordLogin(form.email, form.password, name);
             if (user) {
                 getName(user);
                 redirectNow();
