@@ -3,21 +3,14 @@ import { App, Credentials } from "realm-web";
 import { APP_ID } from "../realm/constants";
 //https://realm.mongodb.com/groups/635beabea043b419bbef7afa/apps/635bec53152200674f1871ed/auth/users
 //https://cloud.mongodb.com/v2/635beabea043b419bbef7afa#metrics/replicaSet/635bec2a7f47f94d7c3a5895/explorer/auth_db/users/find
-    // sl08031994@gmail.com
-    // test123
     
-    
-// Creating a Realm App Instance
 const app = new App(APP_ID);
  
-// Creating a user context to manage and access all the user related functions
-// across different components and pages.
 export const UserContext = createContext();
  
 export const UserProvider = ({ children }) => {
  const [user, setUser] = useState(null);
  
- // Function to log in user into our App Service app using their email & password
  const emailPasswordLogin = async (email, password, name = "") => {
     const credentials = Credentials.emailPassword(email, password);
     const user = await app.logIn(credentials);
@@ -63,28 +56,20 @@ export const UserProvider = ({ children }) => {
 //     );
 //  }
  
- // Function to sign up user into our App Service app using their email & password
+
  const emailPasswordSignup = async (email, password) => {
- //const emailPasswordSignup = async (email, password, name) => {
    try {
      await app.emailPasswordAuth.registerUser({email, password});
-     // Since we are automatically confirming our users, we are going to log in
-     // the user using the same credentials once the signup is complete.
      return "Confirmation mail resent. Please check your email inbox.";
-     //return emailPasswordLogin(email, password, name);
    } catch (error) {
      throw error;
    }
  };
 
  const resendConfirmationMail = async (email) => {
-  //const emailPasswordSignup = async (email, password, name) => {
     try {
       await app.emailPasswordAuth.resendConfirmationEmail({email});
-      // Since we are automatically confirming our users, we are going to log in
-      // the user using the same credentials once the signup is complete.
       return "Confirmation mail sent. Please check your email inbox.";
-      //return emailPasswordLogin(email, password, name);
     } catch (error) {
       throw error;
     }
@@ -117,13 +102,10 @@ export const UserProvider = ({ children }) => {
     }
  }
  
- // Function to fetch the user (if the user is already logged in) from local storage
  const fetchUser = async () => {
    if (!app.currentUser) return false;
    try {
      await app.currentUser.refreshCustomData();
-     // Now, if we have a user, we are setting it to our user context
-     // so that we can use it in our app across different components.
      setUser(app.currentUser);
      return app.currentUser;
    } catch (error) {
@@ -131,12 +113,10 @@ export const UserProvider = ({ children }) => {
    }
  }
  
- // Function to logout user from our App Services app
  const logOutUser = async () => {
    if (!app.currentUser) return false;
    try {
      await app.currentUser.logOut();
-     // Setting the user to null once loggedOut.
      setUser(null);
      return true;
    } catch (error) {
