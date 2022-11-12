@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Route, Routes, HashRouter } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./contexts/user.context";
 import Confirm from "./pages/Confirm.page";
 import Forgot from "./pages/Forgot.page";
@@ -24,7 +24,7 @@ function App() {
   }
 
  return (
-   <HashRouter>
+   <BrowserRouter>
      <UserProvider>
        <Routes>
          <Route exact path="/signin" element={<Signin getName={getName} />} />
@@ -38,7 +38,7 @@ function App() {
          </Route>
        </Routes>
      </UserProvider>
-   </HashRouter>
+   </BrowserRouter>
  );
 }
  
