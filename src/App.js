@@ -24,7 +24,7 @@ function App() {
   }
 
  return (
-   <HashRouter>
+   <BrowserRouter>
      <UserProvider>
        <Routes>
          <Route exact path="/signin" element={<Signin getName={getName} />} />
@@ -38,7 +38,7 @@ function App() {
          </Route>
        </Routes>
      </UserProvider>
-   </HashRouter>
+   </BrowserRouter>
  );
 }
  
