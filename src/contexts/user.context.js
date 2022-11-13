@@ -1,8 +1,6 @@
 import { createContext, useState } from "react";
 import { App, Credentials } from "realm-web";
 import { APP_ID } from "../realm/constants";
-//https://realm.mongodb.com/groups/635beabea043b419bbef7afa/apps/635bec53152200674f1871ed/auth/users
-//https://cloud.mongodb.com/v2/635beabea043b419bbef7afa#metrics/replicaSet/635bec2a7f47f94d7c3a5895/explorer/auth_db/users/find
     
 const app = new App(APP_ID);
  
