@@ -5,6 +5,7 @@ import Confirm from "./pages/Confirm.page";
 import Forgot from "./pages/Forgot.page";
 import Home from "./pages/Home.page";
 import Mailsent from "./pages/Mailsent.page";
+import MailsentReset from "./pages/MailsentReset.page";
 import PrivateRoute from "./pages/PrivateRoute.page";
 import Reset from "./pages/Reset.page";
 import Signin from "./pages/Signin.page";
@@ -29,10 +30,11 @@ function App() {
        <Routes>
          <Route exact path="/signin" element={<Signin getName={getName} />} />
          <Route exact path="/signup" element={<Signup getMail={getMail} />} />
-         <Route exact path="/forgot" element={<Forgot/>} />
+         <Route exact path="/forgot" element={<Forgot getMail={getMail}/>} />
          <Route exact path="/reset" element={<Reset/>} />
          <Route exact path="/confirm" element={<Confirm getName={getName}/>} />
          <Route exact path="/mailsent" element={<Mailsent mail={mail}/>} />
+         <Route exact path="/mailsentreset" element={<MailsentReset mail={mail}/>} />
          <Route element={<PrivateRoute />}>
            <Route exact path="/" element={<Home name={name} />} />
          </Route>

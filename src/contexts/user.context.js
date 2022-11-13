@@ -78,7 +78,7 @@ export const UserProvider = ({ children }) => {
  const confirmNewUser = async (token, tokenId) => {
   try{
     await app.emailPasswordAuth.confirmUser({token, tokenId});
-    return "User confirmed"
+    return "User confirmed."
   }catch(error){
     throw error;
   }
@@ -87,7 +87,7 @@ export const UserProvider = ({ children }) => {
  const sendPasswordResetMail = async (email) => {
     try{
       await app.emailPasswordAuth.sendResetPasswordEmail({email});
-      return "Mail sent!"
+      return "Mail sent."
     }catch(error){
       throw error
     }
@@ -96,10 +96,20 @@ export const UserProvider = ({ children }) => {
  const resetPassword = async (token, tokenId, password) => {
     try{
       await app.emailPasswordAuth.resetPassword({token, tokenId, password});
-      return "Password reset!"
+      return "Password reset."
     }catch(error){
       throw error;
     }
+ }
+
+ const resendResetPassword = async (email) => {
+    try{
+      await app.emailPasswordAuth.sendResetPasswordEmail({email});
+      return "Reset mail resent.";
+    }catch(error){
+      throw error;
+    }
+
  }
  
  const fetchUser = async () => {
@@ -124,7 +134,7 @@ export const UserProvider = ({ children }) => {
    }
  }
  
- return <UserContext.Provider value={{ user, setUser, fetchUser, emailPasswordLogin, emailPasswordSignup, logOutUser, sendPasswordResetMail, resetPassword, confirmNewUser, resendConfirmationMail }}>
+ return <UserContext.Provider value={{ user, setUser, fetchUser, emailPasswordLogin, emailPasswordSignup, logOutUser, sendPasswordResetMail, resetPassword, confirmNewUser, resendConfirmationMail, resendResetPassword }}>
    {children}
  </UserContext.Provider>;
 }

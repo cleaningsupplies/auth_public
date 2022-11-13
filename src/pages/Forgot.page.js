@@ -8,12 +8,12 @@ import { useContext , useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
 
-export default function Forgot() {
+export default function Forgot({getMail}) {
 
     const navigate = useNavigate();
     const location = useLocation();
 
-    const { sendPasswordResetMail } = useContext(UserContext);
+    const { resendResetPassword } = useContext(UserContext);
 
     const [form, setForm] = useState({
         email : ""
@@ -25,15 +25,15 @@ export default function Forgot() {
     };
 
     const redirectNow = () => {
+        getMail(form.email);
         const redirectTo = location.search.replace("?redirectTo=", "");
-        navigate(redirectTo ? redirectTo : "/signin");
+        navigate(redirectTo ? redirectTo : "/mailsentreset");
     }
 
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            await sendPasswordResetMail(form.email);
-            alert("We've sent you a reset link. Please check your e-mail inbox.")
+            await resendResetPassword(form.email);
             redirectNow();
         } catch (error) {
             if (error.statusCode === 404) {
