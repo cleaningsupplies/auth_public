@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
 
 export default function Reset() {
-    // work in user context as well
+
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -45,9 +45,9 @@ export default function Reset() {
                 alert("Your password must contain at least 6 characters!");
             } else if(error.statusCode === 404){
                 alert("Your reset link was used already or has been expired.");
-                //TODO: Resend
             } else{
-                alert(error);
+                alert("Oh, something went wrong. Please try again later.");
+                console.error(error);
             }
         }
     };

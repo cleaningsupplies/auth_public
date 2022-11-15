@@ -46,7 +46,8 @@ export default function Signup({getMail}) {
             } else if(error.statusCode === 401){
                 alert("Please confirm your email.");
             }else{
-                alert(error);
+                alert("Oh, something went wrong. Please try again later.");
+                console.error(error);
             }
         }
     };

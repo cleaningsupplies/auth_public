@@ -8,6 +8,7 @@ import { useContext } from 'react';
 import { UserContext } from '../contexts/user.context';
  
 export default function Home(props) {
+  
  const { logOutUser } = useContext(UserContext);
  
  const logOut = async () => {
@@ -17,7 +18,8 @@ export default function Home(props) {
        window.location.reload(true);
      }
    } catch (error) {
-     alert(error)
+      alert("Oh, something went wrong. Please try again later.");
+      console.error(error);
    }
  }
  

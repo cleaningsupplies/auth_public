@@ -18,7 +18,8 @@ export default function MailsentReset(props) {
                 alert(user)
             }
         } catch (error) {
-            alert(error);
+            alert("Oh, something went wrong. Please try again later.");
+            console.error(error);
         }
     };
     

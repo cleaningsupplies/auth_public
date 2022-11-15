@@ -43,7 +43,8 @@ export default function Confirm() {
 
             await confirmNewUser(token, tokenId);
         } catch (error) {
-            alert(error);
+            alert("Oh, something went wrong. Please try again later.");
+            console.error(error);
         }
     };
 
@@ -51,9 +52,7 @@ export default function Confirm() {
         event.preventDefault();
 
         redirectNow();
-
     };
-
 
     return (
         <div className="app">

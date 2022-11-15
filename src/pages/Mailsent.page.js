@@ -3,22 +3,34 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
 
 export default function Mailsent(props) {
 
     const { resendConfirmationMail } = useContext(UserContext);
 
+    const navigate = useNavigate();
+
     const resendMail = async (event) => {
         let email = props.mail;
         event.preventDefault();
         try{
-            const user = await resendConfirmationMail(email);
-            if (user) {
-                alert(user)
+            const mailsent = await resendConfirmationMail(email);
+            if (mailsent) {
+                alert(mailsent)
             }
         } catch (error) {
-            alert(error);
+            if(error.statusCode === 400){
+                alert("You're already signed up!");
+                navigate("/signin");
+            } else if(error.statusCode === 404){
+                alert("Please try logging in again.");
+                navigate("/signin");
+            }else{
+                alert("Oh, something went wrong. Please try again later.");
+                console.error(error);
+            }
         }
     };
     

@@ -47,14 +47,6 @@ export const UserProvider = ({ children }) => {
     return result !== null ? result.name : "you";
  };
 
-//  const findResult = async (collection, userID) => {
-//     return await collection.findOne(
-//       {_id: userID},
-//       {}
-//     );
-//  }
- 
-
  const emailPasswordSignup = async (email, password) => {
    try {
      await app.emailPasswordAuth.registerUser({email, password});

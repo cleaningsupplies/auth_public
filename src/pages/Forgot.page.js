@@ -39,7 +39,8 @@ export default function Forgot({getMail}) {
             if (error.statusCode === 404) {
                 alert("Oops, we don't recognize your e-mail address. You might want to check if there's a spelling mistake.");
             } else {
-                alert(error);
+                alert("Oh, something went wrong. Please try again later.");
+                console.error(error);
             }
         }
     };

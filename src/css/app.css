@@ -43,10 +43,6 @@
   height: 100vh;
 }
 
-#signup, #forgot, #reset, .login_media{
-  /* display: none; */
-}
-
 .logout_container{
   width: 96%;
   height: 96%;
