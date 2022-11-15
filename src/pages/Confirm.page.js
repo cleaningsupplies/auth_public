@@ -16,7 +16,7 @@ export default function Confirm() {
     const { confirmNewUser } = useContext(UserContext);
 
     const [form, setForm] = useState({
-        name: "",
+        name: "you",
     });
 
     const onFormInputChange = (event) => {

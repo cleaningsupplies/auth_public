@@ -15,7 +15,7 @@ export const UserProvider = ({ children }) => {
 
     setUser(user);
 
-    let result = "you";
+    let result = "";
 
     try{
       const mongo = user.mongoClient("atlas-custom-user-data");

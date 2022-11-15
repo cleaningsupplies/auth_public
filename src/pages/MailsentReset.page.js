@@ -3,11 +3,14 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user.context";
 
 export default function MailsentReset(props) {
 
     const { resendConfirmationMail } = useContext(UserContext);
+
+    const navigate = useNavigate();
 
     const resendMail = async (event) => {
         let email = props.mail;
@@ -18,8 +21,13 @@ export default function MailsentReset(props) {
                 alert(user)
             }
         } catch (error) {
-            alert("Oh, something went wrong. Please try again later.");
-            console.error(error);
+            if(error.statusCode === 400){
+                alert("You already reset your password!");
+                navigate("/signin");
+            } else{
+                alert("Oh, something went wrong. Please try again later.");
+                console.error(error);
+            }
         }
     };
     
